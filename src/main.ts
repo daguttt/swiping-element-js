@@ -1,5 +1,5 @@
 import "./style.css";
-import { swipeDown } from "./swipe-down";
+import { unListenSwipingDown, swipeDown } from "./swipe-down";
 
 export const $target: HTMLDivElement = document.querySelector("#target")!;
 export function getTargetHeight() {
@@ -25,8 +25,10 @@ export function toggleButtonState() {
     $resetButton.disabled = !isTargetExpanded;
 }
 
-export const INITIAL_TARGET_HEIGHT = $target.getBoundingClientRect().height;
-export const HEIGHT_NEEDED_TO_CHANGE_STATE = INITIAL_TARGET_HEIGHT * 0.5; // 50%;
+export const INITIAL_TARGET_HEIGHT = Math.floor(
+    $target.getBoundingClientRect().height
+);
+export const HEIGHT_RATE_TO_CHANGE_STATE = INITIAL_TARGET_HEIGHT * 0.5; // 50%;
 export const MAX_TARGET_HEIGHT = 200;
 
 export let isTargetExpanded = false;
@@ -34,13 +36,13 @@ export function toggleTargetState() {
     isTargetExpanded = !isTargetExpanded;
 }
 
-export let previousPointerYPosition: number | undefined;
+export let previousPointerYPosition: number | null = null;
 /**
  * Update previous pointer position before current movement
  * @param newPositionY @type {number}
  * @returns New pointer position or its reset (undefined)
  */
-export function setPreviousPointerYPosition(newPositionY: number | undefined) {
+export function setPreviousPointerYPosition(newPositionY: number | null) {
     return (previousPointerYPosition = newPositionY);
 }
 
@@ -52,10 +54,14 @@ $resetButton.addEventListener("click", () => {
     if ($resetButton.disabled) return;
     isTargetExpanded = false;
     $resetButton.disabled = !isTargetExpanded;
-    $target.style.height = "";
-    console.log(`Button ${$resetButton.id} reset`);
+    $target.style.height = `${INITIAL_TARGET_HEIGHT}px`;
 });
 
-$target.addEventListener("pointerdown", () => {
+/* -**********************************- */
+// INIT SWIPING
+$target.addEventListener("pointerdown", (event: PointerEvent) => {
+    if (isTargetExpanded) return;
+    $target.setPointerCapture(event.pointerId);
     $target.addEventListener("pointermove", swipeDown);
+    $target.addEventListener("pointerup", unListenSwipingDown, { once: true });
 });
