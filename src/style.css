@@ -28,6 +28,7 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     display: grid;
+    grid-template-columns: 80%;
     place-content: center;
 }
 
@@ -84,6 +85,7 @@ button:active {
     position: relative;
     color: white;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 #target::before {
