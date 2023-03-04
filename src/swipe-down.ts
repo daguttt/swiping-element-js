@@ -42,17 +42,17 @@ export function unListenSwipingDown(event: PointerEvent) {
     const heightNeedToExpand =
         INITIAL_TARGET_HEIGHT + HEIGHT_RATE_TO_CHANGE_STATE;
 
-    setTargetHeight((previousHeight) => {
+    const newHeight = setTargetHeight((previousHeight) => {
         return previousHeight < heightNeedToExpand
             ? `${INITIAL_TARGET_HEIGHT}px`
             : `${MAX_TARGET_HEIGHT}px`;
     });
     setPreviousPointerYPosition(null);
 
-    const newHeight = getTargetHeight();
     if (newHeight === INITIAL_TARGET_HEIGHT) return;
 
     // Enable swiping up functionality
     $target.addEventListener("pointerdown", initSwipingUp);
     toggleTargetState();
+    $target.textContent = "Swipe me up";
 }

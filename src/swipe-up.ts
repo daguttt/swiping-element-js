@@ -48,9 +48,6 @@ function unListenSwippingUp(event: PointerEvent) {
 
     const heightNeedToFold = MAX_TARGET_HEIGHT - HEIGHT_RATE_TO_CHANGE_STATE;
 
-    const currentTargetHeight = getTargetHeight();
-    if (currentTargetHeight === INITIAL_TARGET_HEIGHT) return;
-
     const newHeight = setTargetHeight((previousHeight) => {
         return previousHeight > heightNeedToFold
             ? `${MAX_TARGET_HEIGHT}px`
@@ -62,4 +59,5 @@ function unListenSwippingUp(event: PointerEvent) {
 
     $target.removeEventListener("pointerdown", initSwipingUp);
     toggleTargetState();
+    $target.textContent = "Swipe me down";
 }
