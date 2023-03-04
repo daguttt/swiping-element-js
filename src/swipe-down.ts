@@ -23,14 +23,16 @@ export function swipeDown(event: PointerEvent) {
         return;
     }
 
-    const moveY = currentPointerYPosition - previousPointerYPosition;
+    let moveY = currentPointerYPosition - previousPointerYPosition;
 
     if (moveY < 0.5 && moveY > -0.5) return;
-    setTargetHeight((previousHeight) =>
-        moveY > 0
-            ? `${previousHeight + moveY}px`
-            : `${previousHeight - Math.abs(moveY)}px`
-    );
+    setTargetHeight((previousHeight) => {
+        let newHeight = previousHeight + moveY;
+        if (newHeight < INITIAL_TARGET_HEIGHT)
+            newHeight = INITIAL_TARGET_HEIGHT;
+
+        return `${newHeight}px`;
+    });
     setPreviousPointerYPosition(currentPointerYPosition);
 }
 
