@@ -8,7 +8,6 @@ import {
     toggleTargetState,
     HEIGHT_RATE_TO_CHANGE_STATE,
     MAX_TARGET_HEIGHT,
-    getTargetHeight,
 } from "./main";
 
 export function initSwipingUp(event: PointerEvent) {
