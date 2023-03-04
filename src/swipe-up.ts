@@ -63,5 +63,4 @@ function unListenSwippingUp(event: PointerEvent) {
 
     $target.removeEventListener("pointerdown", initSwipingUp);
     toggleTargetState();
-    toggleButtonState();
 }

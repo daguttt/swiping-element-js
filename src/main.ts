@@ -46,17 +46,6 @@ export function setPreviousPointerYPosition(newPositionY: number | null) {
     return (previousPointerYPosition = newPositionY);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    $resetButton.disabled = !isTargetExpanded;
-});
-
-$resetButton.addEventListener("click", () => {
-    if ($resetButton.disabled) return;
-    isTargetExpanded = false;
-    $resetButton.disabled = !isTargetExpanded;
-    $target.style.height = `${INITIAL_TARGET_HEIGHT}px`;
-});
-
 /* -**********************************- */
 // INIT SWIPING
 $target.addEventListener("pointerdown", (event: PointerEvent) => {

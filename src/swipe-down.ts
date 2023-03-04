@@ -54,5 +54,4 @@ export function unListenSwipingDown(event: PointerEvent) {
     // Enable swiping up functionality
     $target.addEventListener("pointerdown", initSwipingUp);
     toggleTargetState();
-    toggleButtonState();
 }
