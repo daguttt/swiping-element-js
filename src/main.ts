@@ -21,10 +21,6 @@ export function setTargetHeight(calc: (prevValue: number) => string) {
 export const $resetButton: HTMLButtonElement =
     document.querySelector("#reset-button")!;
 
-export function toggleButtonState() {
-    $resetButton.disabled = !isTargetExpanded;
-}
-
 export const INITIAL_TARGET_HEIGHT = Math.floor(
     $target.getBoundingClientRect().height
 );

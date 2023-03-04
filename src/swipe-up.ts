@@ -5,7 +5,6 @@ import {
     previousPointerYPosition,
     setTargetHeight,
     setPreviousPointerYPosition,
-    toggleButtonState,
     toggleTargetState,
     HEIGHT_RATE_TO_CHANGE_STATE,
     MAX_TARGET_HEIGHT,
