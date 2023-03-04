@@ -8,7 +8,6 @@ import {
     setPreviousPointerYPosition,
     toggleTargetState,
     HEIGHT_RATE_TO_CHANGE_STATE,
-    getTargetHeight,
 } from "./main";
 import { initSwipingUp } from "./swipe-up";
 
