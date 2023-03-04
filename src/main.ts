@@ -32,6 +32,8 @@ export function toggleTargetState() {
     isTargetExpanded = !isTargetExpanded;
 }
 
+/* -*************************************************************************- */
+// FOUNDATION
 export let previousPointerYPosition: number | null = null;
 /**
  * Update previous pointer position before current movement
@@ -50,3 +52,4 @@ $target.addEventListener("pointerdown", (event: PointerEvent) => {
     $target.addEventListener("pointermove", swipeDown);
     $target.addEventListener("pointerup", unListenSwipingDown, { once: true });
 });
+/* -*************************************************************************- */
