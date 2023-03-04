@@ -29,13 +29,7 @@ body {
     min-height: 100vh;
     display: grid;
     place-content: center;
-
-    /* color: var(--text-color) */
 }
-
-/* a {
-  color: var(--link-color);
-} */
 
 h1,
 h2,
@@ -71,21 +65,22 @@ button:active {
 /* -*************************************************************************- */
 /* SPECIFIC */
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
+#target,
+#target::before {
+    touch-action: none; /* Fix for touch screens */
 }
 
 #target {
+    min-height: fit-content;
+    max-height: 200px;
+    user-select: none;
+    transition: height 150ms ease-out;
+
     padding-block: 1rem;
     padding-inline: 1.5rem;
     padding-block-end: 2rem;
     background-color: gray;
     border-radius: 2px;
-    min-height: fit-content;
-    max-height: 200px;
-    user-select: none;
     position: relative;
     color: white;
     margin-bottom: 1rem;
@@ -101,15 +96,4 @@ button:active {
     left: 50%;
     bottom: 0.5rem;
     translate: -50% 0;
-}
-
-#point {
-    --size: 10px;
-    height: var(--size);
-    width: var(--size);
-
-    position: fixed;
-    left: 0;
-    top: 0;
-    background-color: lime;
 }
